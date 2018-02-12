@@ -1,0 +1,131 @@
+body {
+  font-family: 'BioRhyme Expanded', serif;
+   background: 		#F5F5F5;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 80%;
+}
+
+#gallary {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 20px;
+ 
+}
+
+.ui{
+  display: grid;
+  grid-template-columns: auto; 
+  
+}
+
+.card {
+   display: grid;
+   grid-template-rows: 30px; 200px, 30px;
+   background: #EDF2F4;
+   padding:10px;
+   font-size: 10px;
+   box-shadow: 1px 1px 2px #404040;
+   max-width:400px;
+  
+}
+
+.image-name{
+  background: #EF233C;
+  max-height: 16px;
+  padding:10px;
+  display: flex;
+  color: #EDF2F4;
+  margin-bottom: 10px;
+  font-family: arial;
+  font-size: 13px;
+  
+}
+
+.delete {
+  text-align: right;
+  height: 200px;
+
+}
+
+.material-icons {
+  color: grey;
+}
+
+.material-icons:hover {
+  cursor:pointer;
+}
+
+
+#save-btn{
+ background: #EDF2F4;
+ padding: 10px;
+ text-align: center;
+ margin: 10px;
+ border-radius: 2px;
+ box-shadow: 1px 1px 2px #404040;
+ width:200px;
+ justify-self: center;
+}
+
+.result{
+  color:white;
+  justify-self: center;
+  font-size: 40px;
+  margin: 0 auto;
+  letter-spacing: 10px;
+}
+
+img{
+  box-shadow: 1px 1px 2px #404040;
+  justify-self: center;
+  margin-bottom: 15px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    color: #2B2D42;
+    padding: 10px;
+    justify-self: center;
+    height: 35px;
+    margin-top: 20px;
+    box-shadow: 1px 1px 2px #404040;
+    padding-top: 26px;
+    width: 200px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    background: #EDF2F4;
+    text-align: center;
+}
+
+#save-btn:hover {
+  cursor: pointer
+}
+
+#name {
+  border: none;
+  height: 30px;
+  background: none;
+  border-bottom: 1px solid #2B2D42;
+  color: #2B2D42;
+}
+
+#name:-webkit-autofill {
+    background-color: red !important;
+}
+
+#name:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #EDF2F4 inset;
+    -webkit-text-fill-color: #2B2D42 !important;
+}
+
+#name:focus {
+    background: none;
+    outline-width: 0;
+}
+
