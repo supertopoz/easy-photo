@@ -9,10 +9,11 @@
   <meta name="viewport" content="width=device-width">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="src/stylesheet.css">
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment-with-locales.min.js"></script>
   <script type="text/javascript" src="config.js"></script>
   <script type="text/javascript" src="src/firebase.js"></script>
   <script type="text/javascript" src="src/redux.js"></script>
+  <script type="text/javascript" src="src/uiData.js"></script>
   <script type="text/javascript" src="src/app.js"></script>
   <title>JS Bin</title>
 </head>
@@ -20,14 +21,13 @@
 	<div class="wrapper">
 	<div class="ui">
   	<label id="upload-btn" class="custom-file-upload">
-    	<input class="btn "type="file" onchange="previewFile()">   
-    	<span id="upload-text" class="btn">UPLOAD</span>
+    	<input hidden class="btn" type="file" onchange="previewFile()">   
+    	<span id="upload-text" class="btn">ADD</span>
   	</label>  
-    <label id="upload-name" class="custom-file-upload" hidden>
-      <input placeholder="Enter name..." id="name" type="input" >    
+    <label id="upload-name">
+      <input hidden  placeholder="Enter name..." id="name" type="input" >    
+      <button hidden id="save-btn">Save</button>
     </label>  
-  	<div hidden id="save-btn">Save</div>
-  	<br>
   	<img id="photo" src="" width="170">
 	</div>
 	<div id="gallary"></div>  

@@ -1,6 +1,6 @@
 body {
   font-family: 'BioRhyme Expanded', serif;
-   background: 		#F5F5F5;
+   background:    #ffffff;
 }
 
 .wrapper {
@@ -15,43 +15,66 @@ body {
  
 }
 
+#upload-btn {
+  background: #00adef;
+  color:white;
+  border: 1px solid #ac1100;
+  border-radius: 5px;
+  font-family: "Raleway",sans-serif;
+  transition: all 0.15s linear;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 0 0.075em 0.075em rgba(0,0,0,0.5);
+}
+
+#upload-btn:hover {
+  background: rgb(237,0,140);
+}
+
+
+
 .ui{
   display: grid;
   grid-template-columns: auto; 
   
 }
 
+.card-header {
+  display:grid;
+  grid-template-columns: 90% 10%;
+  grid-template-rows: 30px;
+}
+
 .card {
    display: grid;
+   grid-gap: 10px;
    grid-template-rows: 30px; 200px, 30px;
-   background: #EDF2F4;
-   padding:10px;
    font-size: 10px;
    box-shadow: 1px 1px 2px #404040;
    max-width:400px;
-  
+   border: 1px solid rgba(0,0,0,0.15);
+   padding: 5px 5px 0;
+   background-color: #fff;
+   border-radius: 3px;
+   box-shadow: 0 0.125em 0.275em 0 rgba(0,0,0,0.075);
 }
 
+
+
 .image-name{
-  background: #EF233C;
-  max-height: 16px;
   padding:10px;
-  display: flex;
-  color: #EDF2F4;
-  margin-bottom: 10px;
+  color: rgb(237,0,140);
   font-family: arial;
-  font-size: 13px;
-  
+  margin: 10px;
 }
 
 .delete {
   text-align: right;
-  height: 200px;
-
+  margin-top:8px;
 }
 
 .material-icons {
   color: grey;
+  font-size: 20px;
 }
 
 .material-icons:hover {
@@ -60,14 +83,14 @@ body {
 
 
 #save-btn{
- background: #EDF2F4;
+/* background: #EDF2F4;
  padding: 10px;
  text-align: center;
  margin: 10px;
  border-radius: 2px;
  box-shadow: 1px 1px 2px #404040;
  width:200px;
- justify-self: center;
+ justify-self: center;*/
 }
 
 .result{
@@ -85,7 +108,7 @@ img{
 }
 
 input[type="file"] {
-    display: none;
+  /*  display: none;*/
 }
 
 .custom-file-upload {
@@ -96,7 +119,7 @@ input[type="file"] {
     margin-top: 20px;
     box-shadow: 1px 1px 2px #404040;
     padding-top: 26px;
-    width: 200px;
+    width: 250px;
     cursor: pointer;
     margin-bottom: 20px;
     background: #EDF2F4;
@@ -105,6 +128,21 @@ input[type="file"] {
 
 #save-btn:hover {
   cursor: pointer
+}
+
+#upload-name {
+  display:grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 20px;
+  grid-auto-flow: column;
+  width: 250px;
+  padding: 10px;
+  background: #00adef;
+  color: white;
+  border: 1px solid #ac1100;
+  border-radius: 5px;
+  font-family: "Raleway",sans-serif;
+  text-shadow: 0 0.075em 0.075em rgba(0,0,0,0.5);
 }
 
 #name {
@@ -129,3 +167,14 @@ input[type="file"] {
     outline-width: 0;
 }
 
+textarea {
+  margin: 5px;
+  resize: vertical;
+  border: 1px solid #d3d3d3;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border-radius: 3px;
+}

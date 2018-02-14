@@ -17,7 +17,7 @@ const reducer = (state = {save: false}, action) =>{
     case 'SAVE_IMAGE':
       return Object.assign({}, state, {
         save: action.save
-      })     
+      })       
     default:
       return state
   }
@@ -31,6 +31,7 @@ updateUi.subscribe(() => {
   (data.upload) ? hideSave() : showSave()
   if (data.save) uploadPhoto(data);
   if (data.imageName) upDateText(data.imageName)
+
 });
 
 const setUpload = (e) => ({type:'UPLOAD', upload: e.value})
@@ -38,23 +39,28 @@ const setImage = (e) => ({type:'ADD_IMAGE', image: e.value})
 const setImageName = (e) => ({type:'SET_IMAGE_NAME', imageName: e.value})
 const saveImage = (e) => ({type:'SAVE_IMAGE', save: e.value})
 
+
 const showSave = () => {
-  document.getElementById('upload-btn').style.display = 'none';
-  document.getElementById('upload-name').style.display = 'block';
-  document.getElementById('save-btn').style.display = 'block';
-  document.getElementById('photo').style.display = 'block';
+  $('#upload-btn').hide();
+  $('#upload-name').show();
+  $('#name').show()
+  $('#save-btn').show();
+  $('#photo').show();
 };
 
 const hideSave = () => {
-  document.getElementById('upload-btn').style.display = 'block';
-  document.getElementById('upload-name').style.display = 'none';
-  document.getElementById('save-btn').style.display = 'none';
-  document.getElementById('photo').style.display = 'none';
+  $('#upload-btn').show();
+  $('#upload-name').hide();
+  $('#photo').hide();
 };
 
 const upDateText = (text) => {
   document.getElementById('name').value = text;
 }
+
+$(document).ready(() => {
+    $('#upload-name').hide();
+})
 
 
 

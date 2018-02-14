@@ -1,5 +1,4 @@
 function previewFile(){
-
   updateUi.dispatch(setUpload({value: false}))
   var preview = document.querySelector('img'); //selects the query named img
   var file    = document.querySelector('input[type=file]').files[0]; //sames as here
@@ -22,8 +21,13 @@ $(document).on('click', '#save-btn', () => {
   updateUi.dispatch(saveImage({value:false}))
   updateUi.dispatch(setImageName({value: ''}))
   $('#name').val('')
-  updateUi.dispatch(setImage({value: ''}))
+  $('#photo').attr("src","");
+ // updateUi.dispatch(setImage({value: ''}))
 
+})
+
+$(document).on('click','#upload-btn', () => {
+   $('input').val(null); 
 })
 
 $(document).on('keyup', '#name', (e) => {
@@ -31,16 +35,45 @@ $(document).on('keyup', '#name', (e) => {
   updateUi.dispatch(setImageName({value: key}))
 })
 
+$(document).on('keyup', '.image-name', (e) => {
+  const id = e.target.id.replace('image-name-', '');
+  const text = e.target.value;
+  const data = {};
+  data.id = id;
+  data.text = text;
+  console.log(data)
+  dataUpdate.dispatch(updateImageName({ value: data}))
+})
+
+
+$(document).on('keyup', 'textarea', (e) => {
+  const id = e.target.id.replace('tag-', '');
+  const text = e.target.value;
+  const data = {};
+  data.id = id;
+  data.text = text;
+  dataUpdate.dispatch(updateTags({ value: data}))
+})
+
+
+
 var photos = firebase.database().ref('/photos');
-  photos.on('value', function(data) {    
+  photos.on('value', function(data) { 
+    let tags = '';
+    dataUpdate.dispatch(updateData({value: data.val()}))
     var data = data.val();
      $('#gallary').empty();
-    for (var i in data) {      
+    for (var i in data) {    
       $('#gallary').prepend( 
-        '<div id="'+ i +'" class="card">' +
-        '<span class="delete"><i class="material-icons">delete</i></span>' +
-        '<span class="image-name">'+ data[i].name +'</span>'+
+        '<div class="card">' +
+        '<div id="'+ i +'" class="card-header">'+
+        '<input id="image-name-' + i + '" type="text" value="' + data[i].name + '"class="image-name"></input>'+
+        '<span class="delete"><i class="material-icons">delete</i></span>' +        
+        '</div>'+
+        '<span>'+ data[i].timestamp +'</span>' + 
         '<img width="180px" src="'+ data[i].url +'"  />' +      
+        '<textarea placeholder="Add tags..."  id="tag-' + i + '">'+ data[i].tags +'</textarea>'+        
+        '<button onClick="saveDataChanges()">Update Changes</button>'+
         '</div>'
       )
     };
@@ -90,7 +123,13 @@ const monitorUpload = (snapshot) => {
 
 const updataPhotoToFb = (downloadURL, imageName) => {
   const time = new Date().getTime();
+  const timestamp = moment().format("MMMM DD YYYY")
   const data = {};
-  data[time] = { url:downloadURL, name:imageName }
+
+  data[time] = { url:downloadURL, 
+    name:imageName, 
+    timestamp: 
+    timestamp, tags: '' 
+  }
   firebase.database().ref('photos/').update(data);
 }
